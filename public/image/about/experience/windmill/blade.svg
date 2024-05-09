@@ -1,0 +1,36 @@
+<svg width="246" height="246" viewBox="0 0 246 246" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="101" y="1" width="36" height="91" fill="#FD9B45"/>
+<rect x="125" y="1" width="12" height="91" fill="#FFD3AC"/>
+<rect x="101" y="1" width="14" height="91" fill="#FFD3AC"/>
+<rect x="101" y="1" width="36" height="91" stroke="#0E0E0F" stroke-width="2"/>
+<rect x="101" y="14" width="36" height="13" stroke="#0E0E0F" stroke-width="2"/>
+<rect x="101" y="40" width="36" height="13" stroke="#0E0E0F" stroke-width="2"/>
+<rect x="101" y="66" width="36" height="13" stroke="#0E0E0F" stroke-width="2"/>
+<rect width="36" height="91" transform="matrix(-1 0 0 1 145 154)" fill="#FD9B45"/>
+<rect width="12" height="91" transform="matrix(-1 0 0 1 121 154)" fill="#FFD3AC"/>
+<rect width="14" height="91" transform="matrix(-1 0 0 1 145 154)" fill="#FFD3AC"/>
+<rect width="36" height="91" transform="matrix(-1 0 0 1 145 154)" stroke="#0E0E0F" stroke-width="2"/>
+<rect width="36" height="13" transform="matrix(-1 0 0 1 145 167)" stroke="#0E0E0F" stroke-width="2"/>
+<rect width="36" height="13" transform="matrix(-1 0 0 1 145 193)" stroke="#0E0E0F" stroke-width="2"/>
+<rect width="36" height="13" transform="matrix(-1 0 0 1 145 219)" stroke="#0E0E0F" stroke-width="2"/>
+<rect x="121" y="1" width="4" height="244" fill="#FD9B45" stroke="#0E0E0F" stroke-width="2"/>
+<rect x="1" y="145" width="36" height="91" transform="rotate(-90 1 145)" fill="#FD9B45"/>
+<rect x="1" y="121" width="12" height="91" transform="rotate(-90 1 121)" fill="#FFD3AC"/>
+<rect x="1" y="145" width="14" height="91" transform="rotate(-90 1 145)" fill="#FFD3AC"/>
+<rect x="1" y="145" width="36" height="91" transform="rotate(-90 1 145)" stroke="#0E0E0F" stroke-width="2"/>
+<rect x="14" y="145" width="36" height="13" transform="rotate(-90 14 145)" stroke="#0E0E0F" stroke-width="2"/>
+<rect x="40" y="145" width="36" height="13" transform="rotate(-90 40 145)" stroke="#0E0E0F" stroke-width="2"/>
+<rect x="66" y="145" width="36" height="13" transform="rotate(-90 66 145)" stroke="#0E0E0F" stroke-width="2"/>
+<rect width="36" height="91" transform="matrix(0 1 1 0 154 101)" fill="#FD9B45"/>
+<rect width="12" height="91" transform="matrix(0 1 1 0 154 125)" fill="#FFD3AC"/>
+<rect width="14" height="91" transform="matrix(0 1 1 0 154 101)" fill="#FFD3AC"/>
+<rect width="36" height="91" transform="matrix(0 1 1 0 154 101)" stroke="#0E0E0F" stroke-width="2"/>
+<rect width="36" height="13" transform="matrix(0 1 1 0 167 101)" stroke="#0E0E0F" stroke-width="2"/>
+<rect width="36" height="13" transform="matrix(0 1 1 0 193 101)" stroke="#0E0E0F" stroke-width="2"/>
+<rect width="36" height="13" transform="matrix(0 1 1 0 219 101)" stroke="#0E0E0F" stroke-width="2"/>
+<rect x="1" y="125" width="4" height="244" transform="rotate(-90 1 125)" fill="#FD9B45" stroke="#0E0E0F" stroke-width="2"/>
+<circle cx="123" cy="123" r="8" fill="#FD9B45" stroke="#0E0E0F" stroke-width="2"/>
+<circle cx="125" cy="121" r="6" fill="#FFD3AC"/>
+<circle cx="123" cy="123" r="8" stroke="#0E0E0F" stroke-width="2"/>
+<circle cx="123" cy="123" r="2" fill="#0E0E0F"/>
+</svg>

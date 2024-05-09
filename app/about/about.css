@@ -1,0 +1,10 @@
+.about-container::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+  background: #ffdee0;
+  /* -webkit-border-radius: 1ex; */
+}
+.about-container::-webkit-scrollbar-thumb {
+  background: #ff4655;
+  -webkit-border-radius: 1ex;
+}

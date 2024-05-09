@@ -1,0 +1,9 @@
+.dialog-container::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+  background: #ff46554d;
+}
+
+.dialog-container::-webkit-scrollbar-thumb {
+  background: #ff4655;
+}
