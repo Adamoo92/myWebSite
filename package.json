@@ -11,6 +11,7 @@
   "dependencies": {
     "@juggle/resize-observer": "^3.4.0",
     "@lottiefiles/react-lottie-player": "^3.5.3",
+    "@vercel/speed-insights": "^1.0.10",
     "framer-motion": "^11.0.28",
     "lodash": "^4.17.21",
     "merge-refs": "^1.2.2",
