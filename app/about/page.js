@@ -2,11 +2,11 @@ import BottomNavigation from "../components/bottomNavigation";
 import Countdown from "./components/countdown";
 import SplitLine from "../components/splitLine";
 import FirstScreen from "./components/firstScreen";
-import Tools from "./components/tools";
 import Experience from "./components/experience";
 import "./about.css";
 import Graphic from "./components/graphic";
 import UserInterface from "./components/userInterface";
+import Tools2 from "./components/tools2";
 
 export default function About() {
   return (
@@ -16,9 +16,9 @@ export default function About() {
           <Countdown />
           <SplitLine top />
         </div>
-        <div className="about-container flex-1 overflow-y-scroll">
+        <div className="about-container flex-1 overflow-y-scroll pr-3">
           <FirstScreen />
-          <Tools />
+          <Tools2 />
           <Experience />
           <Graphic />
           <UserInterface />
