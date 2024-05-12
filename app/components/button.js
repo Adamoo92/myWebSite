@@ -1,37 +1,32 @@
 "use client";
-import React, { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { Rethink_Sans } from "next/font/google";
-
-const rethinkSans = Rethink_Sans({
-  subsets: ["latin"],
-  display: "swap",
-  weight: "800",
-  style: "italic",
-});
+import { useState } from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 function Button(props) {
   const [hover, setHover] = useState(false);
 
   return (
-    <div
-      className={`${rethinkSans.className} text-base w-max text-white px-12 py-3 relative cursor-pointer overflow-hidden bg-ownBlack`}
+    <Link
+      href={props.href || ""}
+      className="absolute text-ownBlack font-medium w-max h-max px-6 py-3 bg-white border-2 border-ownBlack rounded-full overflow-hidden"
+      style={{
+        ...props.style,
+        paddingLeft: props.px,
+        paddingRight: props.px,
+        paddingTop: props.py,
+        paddingBottom: props.py,
+      }}
       onPointerMove={() => setHover(true)}
       onPointerLeave={() => setHover(false)}
     >
-      <AnimatePresence>
-        {hover && (
-          <motion.div
-            className="absolute w-full h-full bg-[#FF4655] top-0"
-            initial={{ left: "-120%", skewX: -30 }}
-            animate={{ left: hover ? 0 : "-120%", skewX: hover ? 0 : -40 }}
-            exit={{ left: "-120%", skewX: -30 }}
-            transition={{ duration: 0.4 }}
-          />
-        )}
-      </AnimatePresence>
-      <span className="relative select-none">{props.children}</span>
-    </div>
+      <motion.span
+        className="absolute h-full bg-ownRed-900 top-0 rounded-full"
+        style={{ left: "-200%", width: "200%" }}
+        animate={{ left: hover ? "-50%" : "-200%" }}
+      />
+      <span className="relative">{props.children}</span>
+    </Link>
   );
 }
 

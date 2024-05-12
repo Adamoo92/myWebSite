@@ -1,12 +1,11 @@
-import { Rethink_Sans } from "next/font/google";
+import { Raleway } from "next/font/google";
 import DetailLine from "./components/detailLine";
-import Button from "./components/button";
 
-const rethinkSans = Rethink_Sans({
+const raleway = Raleway({
   subsets: ["latin"],
   display: "swap",
   weight: "800",
-  style: "italic",
+  style: ["normal", "italic"],
 });
 
 export default function Home() {
@@ -16,13 +15,13 @@ export default function Home() {
         <div className="title flex gap-8">
           <DetailLine />
           <div
-            className={`${rethinkSans.className} text-[110px] leading-[90px] uppercase select-none`}
+            className={`${raleway.className} text-8xl italic uppercase select-none`}
           >
-            <h2>Welcome to</h2>
-            <h2>my website</h2>
+            <h1>Welcome to</h1>
+            <h1>my website</h1>
           </div>
         </div>
-        <Button>Read More</Button>
+        {/* <Button>Read More</Button> */}
       </div>
     </div>
   );

@@ -37,7 +37,7 @@ const Time = (props) => {
 
 function Countdown(props) {
   const [time, setTime] = useState({ d: null, h: null, m: null, s: null });
-  const countdowntime = new Date("2024-05-10T23:59:59");
+  const countdowntime = new Date("2024-05-30T23:59:59");
 
   useEffect(() => {
     const time = setInterval(() => {

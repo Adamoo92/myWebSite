@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Button from "./button";
 
 const list = ["home", "about", "project", "article"];
 
@@ -32,7 +33,20 @@ function Header() {
 
   return (
     <header className="header w-full h-max flex flex-row gap-4 text-base font-light fixed top-0 z-[9999]">
-      <div className="header-left basis-1/4"></div>
+      <div className="header-left basis-1/4">
+        <Link
+          href="/"
+          className="w-max h-max absolute"
+          style={{ left: 88, bottom: 0 }}
+        >
+          <Image
+            src="/image/logo.svg"
+            width={170}
+            height={48}
+            alt="armoo-logo"
+          />
+        </Link>
+      </div>
       <nav className="basis-1/2 flex overflow-hidden">
         <HeadShape left />
         <ul className="flex grow justify-center bg-ownBlack">
@@ -68,7 +82,11 @@ function Header() {
         </ul>
         <HeadShape right />
       </nav>
-      <div className="header-right basis-1/4"></div>
+      <div className="header-right basis-1/4">
+        <Button href="" style={{ right: 88, bottom: 0 }}>
+          Contact Me
+        </Button>
+      </div>
     </header>
   );
 }
