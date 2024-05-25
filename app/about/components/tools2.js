@@ -1,7 +1,14 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { Anton } from "next/font/google";
+import { useEffect, useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
+
+const anton = Anton({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400"],
+});
 
 const iconLists = [
   { name: "photoshop", color: "#0EA5E9", rate: 9 },
@@ -13,12 +20,13 @@ const iconLists = [
   { name: "affinity", color: "#14B8A6", rate: 8.8 },
 ];
 
+const titleColor = ["#0E0E0F", "#FFFFFF", "#06F7F2", "#FF014C"];
+
 const ToolsButton = (props) => {
   return (
     <div
       className="tools-button relative flex justify-center"
       style={{ width: 100, height: 106 }}
-      key={props.key}
     >
       <span
         className="absolute border-2 rounded-2xl bottom-0"
@@ -113,19 +121,43 @@ const ToolsButton = (props) => {
 function Tools2(props) {
   const [selected, setSelected] = useState(0);
   const [progress, setProgress] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref);
 
   useEffect(() => {
     setProgress(Math.round(iconLists[selected].rate * 3));
   }, [selected]);
 
   return (
-    <div
-      className="tools-2-container w-full h-full flex flex-col gap-16 justify-center items-center text-ownBlack border-2 border-ownBlack"
-      style={{ marginTop: 120, maxHeight: 900, minHeight: 600 }}
+    <section
+      ref={ref}
+      className="about-tools-container flex flex-col gap-16 justify-center items-center bg-white rounded-3xl"
+      style={{ marginTop: 120, maxHeight: 1200, minHeight: 900 }}
     >
       <div className="tools-2-title flex flex-col items-center gap-2">
-        <h1 className="text-9xl font-bold">Tools</h1>
-        <h4 className="font-sans text-2xl">常用工具</h4>
+        <div className="relative">
+          {titleColor.map((item, i) => (
+            <motion.h1
+              key={i}
+              className="text-9xl font-bold w-max h-max"
+              style={{
+                WebkitTextStrokeWidth: 2,
+                WebkitTextStrokeColor: "#0E0E0F",
+                color: `${item}`,
+                position: i === 0 ? "relative" : "absolute",
+                left: i === 0 ? null : 0,
+                top: i === 0 ? null : 0,
+                zIndex: 4 - i,
+              }}
+              initial={{ x: 40 }}
+              animate={{ x: isInView ? 0 : 40 }}
+              transition={{ duration: 0.6, delay: 0.1 + i * 0.1 }}
+            >
+              Tools
+            </motion.h1>
+          ))}
+        </div>
+        <h4 className="font-sans text-2xl text-ownBlack">常用工具</h4>
       </div>
       <div className="tools-2-progress w-max h-max flex flex-col gap-3 items-center">
         <div
@@ -140,7 +172,7 @@ function Tools2(props) {
           </h2>
           {Array(progress)
             .fill(0)
-            .map((i) => (
+            .map((item, i) => (
               <span
                 key={i}
                 className="w-3 h-7 rounded-sm"
@@ -154,17 +186,18 @@ function Tools2(props) {
       </div>
       <div className="flex gap-8">
         {iconLists.map((item, i) => (
-          <ToolsButton
-            key={i}
-            src={item.name}
-            bg={item.color}
-            alt={item.name}
-            onClick={() => setSelected(i)}
-            show={selected === i ? true : false}
-          />
+          <div className={`w-max h-max ${i}`} key={i}>
+            <ToolsButton
+              src={item.name}
+              bg={item.color}
+              alt={item.name}
+              onClick={() => setSelected(i)}
+              show={selected === i ? true : false}
+            />
+          </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

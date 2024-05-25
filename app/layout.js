@@ -20,12 +20,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${poppins.className} w-screen h-screen`}>
         <Header />
-        <div className="w-screen h-screen p-4 overflow-hidden relative">
-          <main className="bg-teal-50 w-full h-full rounded-3xl overflow-hidden">
-            {children}
-            <SpeedInsights />
-          </main>
-        </div>
+        <main className="w-screen h-screen bg-teal-50 overflow-hidden relative">
+          {children}
+          <SpeedInsights />
+        </main>
       </body>
     </html>
   );

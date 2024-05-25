@@ -3,6 +3,7 @@ import React, { useState, useRef } from "react";
 import { Anton } from "next/font/google";
 import Image from "next/image";
 import { motion, transform } from "framer-motion";
+import Link from "next/link";
 
 const anton = Anton({
   subsets: ["latin"],
@@ -11,7 +12,7 @@ const anton = Anton({
   style: "normal",
 });
 
-const Card = ({ src, title, bg }) => {
+const Card = ({ src, title, bg, href }) => {
   const ref = useRef();
 
   const [rotateX, setRotateX] = useState(0);
@@ -59,7 +60,9 @@ const Card = ({ src, title, bg }) => {
         onPointerMove={handlePointer}
         onPointerLeave={handlePointerLeave}
       >
-        <Image src={src} width={260} height={360} alt="graphic-cover" />
+        <Link href={href || ""}>
+          <Image src={src} width={260} height={360} alt="graphic-cover" />
+        </Link>
       </motion.div>
 
       <h2 className="font-sans font-semibold text-xl text-ownBlack capitalize">
@@ -135,7 +138,7 @@ const Adorn = () => {
 function Graphic(props) {
   return (
     <div
-      className="w-full h-max border-4 border-ownBlack p-8 relative"
+      className="about-graphic w-full h-max border-4 border-ownDarkPurple p-8 relative"
       style={{
         background:
           "linear-gradient(to right,#E7E7E7 2px, transparent 2px),linear-gradient(to bottom,#E7E7E7 2px, transparent 2px)",
@@ -145,9 +148,7 @@ function Graphic(props) {
     >
       <Adorn />
       <div className="graphic-title-all flex items-center gap-8">
-        <div
-          className={`graphic-title ${anton.className} text-9xl text-ownBlack w-max h-max px-1 py-3 border-4 border-indigo-500 relative`}
-        >
+        <div className="graphic-title font-bold text-9xl text-ownBlack w-max h-max px-1 py-4 pb-8 border-4 border-indigo-500 relative">
           <span className="absolute w-4 h-4 bg-white border-4 border-indigo-500 left-[-10px] top-[-10px]" />
           <span className="absolute w-4 h-4 bg-white border-4 border-indigo-500 right-[-10px] top-[-10px]" />
           <span className="absolute w-4 h-4 bg-white border-4 border-indigo-500 right-[-10px] bottom-[-10px]" />
@@ -174,11 +175,13 @@ function Graphic(props) {
           src="./image/about/graphic/cover/logo.svg"
           bg="#EC5D4D"
           title="logo"
+          href="#graphic-logo"
         />
         <Card
           src="./image/about/graphic/cover/poster.svg"
           bg="#FDCA49"
           title="poster"
+          href="#graphic-poster"
         />
         <Card
           src="./image/about/graphic/cover/package.svg"

@@ -14,57 +14,78 @@ function FirstScreen(props) {
   const [rotateX, setRotateX] = useState(0);
 
   useEffect(() => {
-    setBgAlpha(transform([165, 165 - bounds.height / 3], [0, 40])(bounds.top));
-    setRotateX(transform([165, 165 - bounds.height / 3], [0, 40])(bounds.top));
+    setBgAlpha(transform([0, 0 - bounds.height / 3], [0, 40])(bounds.top));
+    setRotateX(transform([0, 0 - bounds.height / 3], [0, 40])(bounds.top));
   }, [bounds]);
 
   return (
-    <div
-      className="first-screen w-full h-full relative"
+    <section
+      className="first-screen w-full h-screen relative pt-24"
       style={{ perspective: 1200 }}
       ref={mergeRefs([ref, inViewRef])}
     >
       <motion.div
-        className="w-full h-full rounded-3xl overflow-hidden"
+        className="w-full h-full rounded-3xl overflow-hidden relative"
         initial={{
           rotateX: 0,
         }}
         style={{
           originY: 1,
-          background: `linear-gradient(180deg, rgba(210, 199, 181, 0.00) 0%, rgba(210, 199, 181, ${bgAlpha}) 100%)`,
+          backgroundColor: `rgba(235, 225, 220, ${bgAlpha})`,
           rotateX,
         }}
       >
         <motion.div
-          className="absolute left-[440px] top-[68px]"
-          style={{ originY: 0, originX: 0 }}
-          initial={{ y: 792, rotate: 0 }}
-          animate={{ y: isInView ? 0 : 792, rotate: isInView ? 6 : 0 }}
+          className="absolute"
+          style={{
+            originY: 0,
+            originX: 0,
+            top: "calc(50% - 396px)",
+            right: 240,
+          }}
+          initial={{ y: "100%", rotate: 0, opacity: 0 }}
+          animate={{
+            y: isInView ? 0 : 792,
+            rotate: isInView ? 6 : 0,
+            opacity: isInView ? 1 : 0,
+          }}
           transition={{ duration: 1, type: "spring" }}
         >
           <Image
-            src="/image/newspaper.svg"
+            src="/image/about/firstScreen/newspaper.svg"
             width={640}
             height={792}
             alt="newspaper"
           />
         </motion.div>
         <motion.div
-          className="absolute left-0 top-[310px]"
-          style={{ originY: 0, originX: 0 }}
-          initial={{ x: -512, rotate: 0 }}
-          animate={{ x: isInView ? 0 : -512, rotate: isInView ? -8 : 0 }}
+          className="absolute"
+          style={{ originY: 0, originX: 0, left: 20, top: "calc(50% - 174px)" }}
+          initial={{ x: -512, rotate: 0, opacity: 0 }}
+          animate={{
+            x: isInView ? 0 : -512,
+            rotate: isInView ? -8 : 0,
+            opacity: isInView ? 1 : 0,
+          }}
           transition={{ duration: 1, type: "spring" }}
         >
           <Image
-            src="/image/idcard.svg"
+            src="/image/about/firstScreen/idcard.svg"
             width={512}
             height={348}
             alt="idcard"
           />
         </motion.div>
       </motion.div>
-    </div>
+      <motion.div className="w-max h-max absolute bottom-0 right-0">
+        <Image
+          src="/image/about/firstScreen/character.png"
+          width={413}
+          height={1100}
+          alt="about-firstScreen-character"
+        />
+      </motion.div>
+    </section>
   );
 }
 

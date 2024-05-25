@@ -15,29 +15,21 @@ const anton = Anton({
 // title
 const ExperTitle = ({ isInView }) => {
   return (
-    <div className="title">
+    <div className="experience-title flex flex-col items-center gap-3">
       <motion.h1
-        className={`${anton.className} text-ownRed-900 text-9xl w-max`}
+        className="text-ownRed-900 font-bold text-9xl w-max"
         animate={{ x: isInView ? 0 : "-100%", skewX: isInView ? 0 : -30 }}
         transition={{ duration: 0.6 }}
       >
         Experience
       </motion.h1>
-      <div className="w-max h-max overflow-hidden">
-        <motion.div
-          className="flex gap-1 mt-4 w-max h-max"
-          animate={{ y: isInView ? 0 : "100%" }}
-          transition={{ duration: 0.4, delay: 0.4 }}
-        >
-          <Image
-            src="./image/about/close-dark.svg"
-            width={28}
-            height={28}
-            alt="icon-close-dark"
-          />
-          <h3 className="font-sans text-ownBlack text-xl">工作经历</h3>
-        </motion.div>
-      </div>
+      <motion.h3
+        className="font-sans text-ownBlack text-2xl"
+        animate={{ y: isInView ? 0 : "100%" }}
+        transition={{ duration: 0.4, delay: 0.4 }}
+      >
+        工作经历
+      </motion.h3>
     </div>
   );
 };
@@ -87,7 +79,7 @@ const Windmill = () => {
         transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
       >
         <Image
-          src="./image/about/experience/windmill/hot air balloon.svg"
+          src="./image/about/experience/windmill/hotAirBalloon.svg"
           width={56}
           height={90}
           alt="windmill-hot air balloon"
@@ -145,7 +137,7 @@ const CarPlay = () => {
       style={{ width: 520, height: 360 }}
     >
       <div
-        className="car-building absolute flex justify-center border-b-2 border-b-[#27043E]"
+        className="car-building absolute flex justify-center border-b-2 border-b-[#27043E] overflow-hidden"
         style={{ left: 0, top: 50, width: 520, height: 250 }}
       >
         <div
@@ -596,7 +588,10 @@ function Experience(props) {
   const isInView = useInView(ref, { once: false });
 
   return (
-    <div className="experience mt-16 overflow-hidden relative pb-16" ref={ref}>
+    <div
+      className="experience mt-32 overflow-hidden relative flex flex-col gap-16"
+      ref={ref}
+    >
       <ExperTitle isInView={isInView} />
       <div className="experience-content w-full flex flex-col items-center">
         <HandCode />
@@ -721,7 +716,7 @@ function Experience(props) {
         </div>
         <div
           className="experience-content-4 w-full relative flex justify-center"
-          style={{ height: 460 }}
+          style={{ height: 520 }}
         >
           <div
             className="flex gap-10 items-center h-max"
@@ -747,11 +742,29 @@ function Experience(props) {
           <Image
             src="./image/about/experience/line/line_4.svg"
             width={1200}
-            height={462}
+            height={522}
             alt="experience-line-4"
             className="absolute pointer-events-none"
             style={{ top: -2 }}
           />
+        </div>
+        <div className="experience-rudder w-40 h-40 border-4 border-ownDarkPurple rounded-full flex justify-center items-center relative">
+          <motion.div
+            className="w-max h-max"
+            style={{ rotate: 40 }}
+            animate={{ rotate: [40, -40, 40] }}
+            transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
+          >
+            <Image
+              src="/image/about/experience/rudder.svg"
+              width={140}
+              height={140}
+              alt="about-experience-icon-rudder"
+            />
+          </motion.div>
+        </div>
+        <div className="experience-bottom-line w-full h-32 flex justify-center">
+          <div className="w-1 h-full bg-ownDarkPurple" />
         </div>
       </div>
     </div>

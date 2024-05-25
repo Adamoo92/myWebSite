@@ -14,6 +14,7 @@ module.exports = {
       },
       colors: {
         ownBlack: "#0E0E0F",
+        ownDarkPurple: "#27043E",
         ownRed: {
           100: "#FFF2F3",
           200: "#FFDEE0",
