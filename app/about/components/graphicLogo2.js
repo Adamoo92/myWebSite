@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, transform, useMotionValue } from "framer-motion";
 import Link from "next/link";
 import useMeasure from "react-use-measure";
@@ -164,22 +164,53 @@ const FrameTools = (props) => {
   );
 };
 
-const LogoGrounp = () => {
+const LogoGrounp = ({ dragConstraintsRef }) => {
+  const [logoSelected, setLogoSelected] = useState(null);
+
   return (
     <div className="w-full h-[740px] absolute">
       {logoPosition.map((item, i) => (
         <motion.div
           key={i}
-          className="w-max h-max absolute cursor-pointer"
-          style={{ left: item.left, top: item.top, rotate: item.rotate }}
+          drag
+          dragConstraints={dragConstraintsRef}
+          dragMomentum={false}
+          className="w-max h-max border-2 absolute cursor-pointer z-[40]"
+          style={{
+            left: item.left,
+            top: item.top,
+            rotate: item.rotate,
+            borderColor: "rgba(150, 67, 255, 0)",
+          }}
+          animate={{
+            borderColor:
+              i === logoSelected
+                ? "rgba(150, 67, 255, 1)"
+                : "rgba(150, 67, 255, 0)",
+            zIndex: i === logoSelected ? 49 : 40,
+          }}
           whileHover={{ scale: 1.1 }}
+          onClick={() => setLogoSelected(i)}
+          onPointerCancel={() => setLogoSelected(null)}
         >
           <Image
             src={`/image/about/graphicLogo/logo/${item.name}.svg`}
             width={item.width}
             height={item.height}
             alt={`logo-${item.name}`}
+            className="select-none"
           />
+          {i === logoSelected ? (
+            <>
+              <span className="w-2.5 h-2.5 bg-white border-2 border-[#9643FF] rounded-full absolute left-[-6px] top-[-6px]" />
+              <span className="w-2.5 h-2.5 bg-white border-2 border-[#9643FF] rounded-full absolute right-[-6px] top-[-6px]" />
+              <span className="w-2.5 h-2.5 bg-white border-2 border-[#9643FF] rounded-full absolute right-[-6px] bottom-[-6px]" />
+              <span className="w-2.5 h-2.5 bg-white border-2 border-[#9643FF] rounded-full absolute left-[-6px] bottom-[-6px]" />
+              <span className="w-2.5 h-2.5 bg-white border-2 border-[#9643FF] rounded-full absolute left-[-6px] bottom-[-6px]" />
+            </>
+          ) : (
+            <></>
+          )}
         </motion.div>
       ))}
     </div>
@@ -190,6 +221,7 @@ function GraphicLogo2(props) {
   const [selected, setSelected] = useState(0);
   const [ref, bounds] = useMeasure({ scroll: true, polyfill: ResizeObserver });
   const screenHeight = useMotionValue(0);
+  const dragConstraintsRef = useRef(null);
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver((entries) => {
@@ -252,7 +284,10 @@ function GraphicLogo2(props) {
         }}
       >
         <MenuBar selected={selected} />
-        <div className="flex-1 relative">
+        <div
+          className="flex-1 relative overflow-hidden"
+          ref={dragConstraintsRef}
+        >
           <FrameTools selected={selected} setSelected={setSelected} />
         </div>
       </motion.div>
@@ -276,7 +311,7 @@ function GraphicLogo2(props) {
       ) : (
         <></>
       )}
-      <LogoGrounp />
+      <LogoGrounp dragConstraintsRef={dragConstraintsRef} />
     </section>
   );
 }
