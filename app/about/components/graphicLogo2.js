@@ -285,7 +285,7 @@ function GraphicLogo2(props) {
       >
         <MenuBar selected={selected} />
         <div
-          className="flex-1 relative overflow-hidden"
+          className="flex-1 relative overflow-hidden z-0"
           ref={dragConstraintsRef}
         >
           <FrameTools selected={selected} setSelected={setSelected} />
