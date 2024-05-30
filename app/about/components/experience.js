@@ -1,35 +1,97 @@
 "use client";
 import { useRef } from "react";
-import { Anton } from "next/font/google";
 import Image from "next/image";
-import { useInView, motion } from "framer-motion";
+import { useInView, motion, AnimatePresence } from "framer-motion";
 import { Player } from "@lottiefiles/react-lottie-player";
 
-const anton = Anton({
-  subsets: ["latin"],
-  display: "swap",
-  weight: "400",
-  style: "normal",
-});
-
 // title
-const ExperTitle = ({ isInView }) => {
+const ExperTitle = () => {
+  const titleRef = useRef();
+  const titleIsInView = useInView(titleRef);
+
   return (
-    <div className="experience-title flex flex-col items-center gap-3">
-      <motion.h1
-        className="text-ownRed-900 font-bold text-9xl w-max"
-        animate={{ x: isInView ? 0 : "-100%", skewX: isInView ? 0 : -30 }}
-        transition={{ duration: 0.6 }}
+    <div
+      className="experience-title w-full flex justify-center"
+      style={{ height: 256 }}
+      ref={titleRef}
+    >
+      <div
+        className="w-max flex flex-col items-start gap-2 relative"
+        style={{ color: "#27043E", perspective: 800 }}
       >
-        Experience
-      </motion.h1>
-      <motion.h3
-        className="font-sans text-ownBlack text-2xl"
-        animate={{ y: isInView ? 0 : "100%" }}
-        transition={{ duration: 0.4, delay: 0.4 }}
-      >
-        工作经历
-      </motion.h3>
+        <AnimatePresence>
+          {titleIsInView && (
+            <>
+              <motion.h1
+                className="font-bold text-8xl uppercase"
+                initial={{ rotateY: 70, opacity: 0 }}
+                animate={{ rotateY: 0, opacity: 1 }}
+                exit={{ rotateY: 70, opacity: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                Work
+              </motion.h1>
+              <motion.h1
+                className="font-bold text-8xl uppercase"
+                initial={{ rotateY: -70, opacity: 0 }}
+                animate={{ rotateY: 0, opacity: 1 }}
+                exit={{ rotateY: -70, opacity: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                Experience
+              </motion.h1>
+              <motion.div
+                className="w-max h-max"
+                initial={{ x: -40, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: -40, opacity: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                <Image
+                  src="/image/about/experience/rightBottomArrow.svg"
+                  width={72}
+                  height={48}
+                  alt="experience-rightBottom-arrow"
+                />
+              </motion.div>
+              <motion.div
+                className="font-sans text-2xl font-semibold px-6 py-4 border-2 rounded-full absolute left-0 top-16"
+                style={{
+                  borderColor: "#27043E",
+                  backgroundColor: "#F3A5FB",
+                }}
+                initial={{ rotate: 0, y: -64, opacity: 0 }}
+                animate={{ rotate: -10, y: 0, opacity: 1 }}
+                exit={{ rotate: 0, y: -64, opacity: 0 }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.8,
+                  opacity: { delay: 0.8, duration: 0.1 },
+                }}
+              >
+                工作经历
+              </motion.div>
+              <motion.div
+                className="text-2xl font-bold px-6 py-4 border-2 rounded-full absolute right-0 top-4"
+                style={{
+                  borderColor: "#27043E",
+                  backgroundColor: "#D1EDA0",
+                }}
+                initial={{ rotate: 0, y: -64, opacity: 0 }}
+                animate={{ rotate: 8, y: 0, opacity: 1 }}
+                exit={{ rotate: 0, y: -64, opacity: 0 }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.8,
+                  opacity: { delay: 0.8, duration: 0.1 },
+                }}
+              >
+                2013-2024
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 };
@@ -588,8 +650,8 @@ function Experience(props) {
   const isInView = useInView(ref, { once: false });
 
   return (
-    <div
-      className="experience mt-32 overflow-hidden relative flex flex-col gap-16"
+    <section
+      className="about-experience-container mt-32 overflow-hidden relative flex flex-col items-center gap-16"
       ref={ref}
     >
       <ExperTitle isInView={isInView} />
@@ -767,7 +829,7 @@ function Experience(props) {
           <div className="w-1 h-full bg-ownDarkPurple" />
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

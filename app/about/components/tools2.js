@@ -1,14 +1,7 @@
 "use client";
-import { Anton } from "next/font/google";
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
-
-const anton = Anton({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400"],
-});
 
 const iconLists = [
   { name: "photoshop", color: "#0EA5E9", rate: 9 },

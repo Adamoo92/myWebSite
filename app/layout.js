@@ -1,6 +1,7 @@
 import { Poppins } from "next/font/google";
 import Header from "./components/header";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 import "./globals.css";
 
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
         <main className="w-screen h-screen bg-teal-50 overflow-hidden relative">
           {children}
           <SpeedInsights />
+          <Analytics />
         </main>
       </body>
     </html>

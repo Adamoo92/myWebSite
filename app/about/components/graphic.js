@@ -1,16 +1,8 @@
 "use client";
 import React, { useState, useRef } from "react";
-import { Anton } from "next/font/google";
 import Image from "next/image";
 import { motion, transform } from "framer-motion";
 import Link from "next/link";
-
-const anton = Anton({
-  subsets: ["latin"],
-  display: "swap",
-  weight: "400",
-  style: "normal",
-});
 
 const Card = ({ src, title, bg, href }) => {
   const ref = useRef();
