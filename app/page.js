@@ -1,6 +1,7 @@
 import { Raleway } from "next/font/google";
 import DetailLine from "./components/detailLine";
 import Contack from "./components/contack";
+import Head from "next/head";
 
 const raleway = Raleway({
   subsets: ["latin"],

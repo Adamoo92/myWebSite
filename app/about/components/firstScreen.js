@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import { motion, transform, useInView } from "framer-motion";
 import useMeasure from "react-use-measure";
@@ -10,81 +10,64 @@ function FirstScreen(props) {
   const [ref, bounds] = useMeasure({ scroll: true, polyfill: ResizeObserver });
   const inViewRef = useRef(null);
   const isInView = useInView(inViewRef, { once: false });
-  const [bgAlpha, setBgAlpha] = useState(0);
-  const [rotateX, setRotateX] = useState(0);
 
-  useEffect(() => {
-    setBgAlpha(transform([0, 0 - bounds.height / 3], [0, 40])(bounds.top));
-    setRotateX(transform([0, 0 - bounds.height / 3], [0, 40])(bounds.top));
-  }, [bounds]);
+  const bgAlpha = transform([0, 0 - bounds.height / 3], [0, 1])(bounds.top);
+  const rotateX = transform([0, 0 - bounds.height / 3], [0, 20])(bounds.top);
 
   return (
     <section
-      className="first-screen w-full h-screen relative pt-24"
-      style={{ perspective: 1200 }}
+      className="first-screen w-full h-screen relative pt-28 pb-4"
       ref={mergeRefs([ref, inViewRef])}
     >
-      <motion.div
-        className="w-full h-full rounded-3xl overflow-hidden relative"
-        initial={{
-          rotateX: 0,
-        }}
-        style={{
-          originY: 1,
-          backgroundColor: `rgba(235, 225, 220, ${bgAlpha})`,
-          rotateX,
-        }}
-      >
+      <div className="w-full h-full relative" style={{ perspective: 1200 }}>
         <motion.div
-          className="absolute"
-          style={{
-            originY: 0,
-            originX: 0,
-            top: "calc(50% - 396px)",
-            right: 240,
-          }}
-          initial={{ y: "100%", rotate: 0, opacity: 0 }}
+          className="w-full h-full bg-[#EBE5DC] rounded-2xl flex justify-center items-center relative overflow-hidden"
+          initial={{ backgroundColor: "rgba(235,229,220,0)" }}
           animate={{
-            y: isInView ? 0 : 792,
-            rotate: isInView ? 6 : 0,
-            opacity: isInView ? 1 : 0,
+            backgroundColor: `rgba(235,229,220,${bgAlpha})`,
+            rotateX,
           }}
-          transition={{ duration: 1, type: "spring" }}
+          transition={{ duration: 0 }}
+          style={{ originY: 1 }}
         >
-          <Image
-            src="/image/about/firstScreen/newspaper.svg"
-            width={640}
-            height={792}
-            alt="newspaper"
-          />
+          <motion.div
+            className="h-[72%] w-auto absolute aspect-[4/5]"
+            style={{ x: 80, y: "120%", rotate: 0, opacity: 0 }}
+            animate={{ y: isInView ? 0 : "120%", rotate: 6, opacity: 1 }}
+            transition={{ duration: 1, type: "spring" }}
+          >
+            <Image
+              src="/image/about/firstScreen/newspaper.svg"
+              fill
+              quality={100}
+            />
+          </motion.div>
+          <motion.div
+            className="h-[32%] w-auto absolute aspect-[52/35]"
+            style={{ x: -920, y: -60, rotate: 0, opacity: 0 }}
+            animate={{ x: isInView ? -340 : -920, rotate: -8, opacity: 1 }}
+            transition={{ duration: 1, type: "spring" }}
+          >
+            <Image
+              src="/image/about/firstScreen/idcard.svg"
+              fill
+              quality={100}
+            />
+          </motion.div>
         </motion.div>
         <motion.div
-          className="absolute"
-          style={{ originY: 0, originX: 0, left: 20, top: "calc(50% - 174px)" }}
-          initial={{ x: -512, rotate: 0, opacity: 0 }}
-          animate={{
-            x: isInView ? 0 : -512,
-            rotate: isInView ? -8 : 0,
-            opacity: isInView ? 1 : 0,
-          }}
-          transition={{ duration: 1, type: "spring" }}
+          className="h-full w-auto absolute top-0 right-0 aspect-[21/55]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isInView ? 1 : 0 }}
+          transition={{ duration: 0.2, duration: 1.2 }}
         >
           <Image
-            src="/image/about/firstScreen/idcard.svg"
-            width={512}
-            height={348}
-            alt="idcard"
+            src="/image/about/firstScreen/character.png"
+            fill
+            quality={100}
           />
         </motion.div>
-      </motion.div>
-      <motion.div className="w-max h-max absolute bottom-0 right-0">
-        <Image
-          src="/image/about/firstScreen/character.png"
-          width={413}
-          height={1100}
-          alt="about-firstScreen-character"
-        />
-      </motion.div>
+      </div>
     </section>
   );
 }

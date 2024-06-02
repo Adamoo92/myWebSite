@@ -18,7 +18,6 @@ export default function About() {
         <Tools />
         <Experience />
         <Graphic />
-
         <GraphicLogo2 />
         <GraphicPoster />
         <GraphicPackage />

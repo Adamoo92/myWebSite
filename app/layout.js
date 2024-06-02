@@ -1,15 +1,10 @@
-import { Poppins } from "next/font/google";
+import { poppins } from "./fonts";
 import Header from "./components/header";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import Head from "next/head";
 
 import "./globals.css";
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-});
 
 export const metadata = {
   title: "Armoo Design",
@@ -19,6 +14,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="icon"
+          href="/favicon.ico"
+          type="image/x-icon"
+          sizes="48x48"
+        />
+      </head>
       <body className={`${poppins.className} w-screen h-screen`}>
         <Header />
         <main className="w-screen h-screen bg-teal-50 overflow-hidden relative">

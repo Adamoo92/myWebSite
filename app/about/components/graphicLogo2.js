@@ -168,45 +168,67 @@ const LogoGrounp = ({ dragConstraintsRef }) => {
   const [logoSelected, setLogoSelected] = useState(null);
 
   return (
-    <div className="w-full h-[740px] absolute">
+    <div className="w-full h-[740px] absolute" style={{ marginTop: 62 }}>
       {logoPosition.map((item, i) => (
         <motion.div
           key={i}
           drag
           dragConstraints={dragConstraintsRef}
           dragMomentum={false}
-          className="w-max h-max border-2 absolute cursor-pointer z-[40]"
+          className="absolute outline outline-2 cursor-pointer"
           style={{
+            width: item.width,
+            height: item.height,
             left: item.left,
             top: item.top,
+            background: `url(/image/about/graphicLogo/logo/${item.name}.svg)`,
+            outlineColor: "rgba(150, 67, 255, 0)",
             rotate: item.rotate,
-            borderColor: "rgba(150, 67, 255, 0)",
           }}
+          whileHover={{ scale: 1.1 }}
           animate={{
-            borderColor:
+            outlineColor:
               i === logoSelected
                 ? "rgba(150, 67, 255, 1)"
                 : "rgba(150, 67, 255, 0)",
-            zIndex: i === logoSelected ? 49 : 40,
+            rotate:
+              i === logoSelected
+                ? item.rotate > 0
+                  ? item.rotate - 4
+                  : item.rotate + 4
+                : item.rotate,
           }}
-          whileHover={{ scale: 1.1 }}
-          onClick={() => setLogoSelected(i)}
-          onPointerCancel={() => setLogoSelected(null)}
+          onPointerDown={() => setLogoSelected(i)}
+          onPointerLeave={() => setLogoSelected(null)}
         >
-          <Image
-            src={`/image/about/graphicLogo/logo/${item.name}.svg`}
-            width={item.width}
-            height={item.height}
-            alt={`logo-${item.name}`}
-            className="select-none"
-          />
           {i === logoSelected ? (
             <>
-              <span className="w-2.5 h-2.5 bg-white border-2 border-[#9643FF] rounded-full absolute left-[-6px] top-[-6px]" />
-              <span className="w-2.5 h-2.5 bg-white border-2 border-[#9643FF] rounded-full absolute right-[-6px] top-[-6px]" />
-              <span className="w-2.5 h-2.5 bg-white border-2 border-[#9643FF] rounded-full absolute right-[-6px] bottom-[-6px]" />
-              <span className="w-2.5 h-2.5 bg-white border-2 border-[#9643FF] rounded-full absolute left-[-6px] bottom-[-6px]" />
-              <span className="w-2.5 h-2.5 bg-white border-2 border-[#9643FF] rounded-full absolute left-[-6px] bottom-[-6px]" />
+              <div
+                className="absolute h-5 border-r-2 border-[#9643FF]"
+                style={{ width: "calc(50% + 1px)", top: -20 }}
+              >
+                <span className="absolute w-2.5 h-2.5 bg-white border-2 border-[#9643FF] rounded-full right-[-6px] top-[-6px]" />
+              </div>
+              <span className="absolute w-2.5 h-2.5 bg-white border-2 border-[#9643FF] rounded-full left-[-6px] top-[-6px]" />
+              <span className="absolute w-2.5 h-2.5 bg-white border-2 border-[#9643FF] rounded-full left-[-6px] bottom-[-6px]" />
+              <span className="absolute w-2.5 h-2.5 bg-white border-2 border-[#9643FF] rounded-full right-[-6px] top-[-6px]" />
+              <span className="absolute w-2.5 h-2.5 bg-white border-2 border-[#9643FF] rounded-full right-[-6px] bottom-[-6px]" />
+              <span
+                className="absolute w-2.5 h-2.5 bg-white border-2 border-[#9643FF] rounded-full left-[-6px]"
+                style={{ top: "calc(50% - 5px)" }}
+              />
+              <span
+                className="absolute w-2.5 h-2.5 bg-white border-2 border-[#9643FF] rounded-full right-[-6px]"
+                style={{ top: "calc(50% - 5px)" }}
+              />
+              <span
+                className="absolute w-2.5 h-2.5 bg-white border-2 border-[#9643FF] rounded-full top-[-6px]"
+                style={{ left: "calc(50% - 5px)" }}
+              />
+              <span
+                className="absolute w-2.5 h-2.5 bg-white border-2 border-[#9643FF] rounded-full bottom-[-6px]"
+                style={{ left: "calc(50% - 5px)" }}
+              />
             </>
           ) : (
             <></>
@@ -285,7 +307,7 @@ function GraphicLogo2(props) {
       >
         <MenuBar selected={selected} />
         <div
-          className="flex-1 relative overflow-hidden z-0"
+          className="flex-1 relative overflow-hidden"
           ref={dragConstraintsRef}
         >
           <FrameTools selected={selected} setSelected={setSelected} />
