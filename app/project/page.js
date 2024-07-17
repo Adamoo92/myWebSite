@@ -5,8 +5,6 @@ export const metadata = {
 
 export default function Project() {
   return (
-    <div className="project-page bg-red-50 text-ownBlack w-full h-full flex justify-center items-center">
-      Project
-    </div>
+    <section className="project-page bg-red-50 text-ownBlack w-full h-full flex justify-center items-center"></section>
   );
 }

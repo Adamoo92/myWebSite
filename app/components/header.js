@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const menuList = ["home", "about", "project", "article"];
+const menuList = ["home", "about", "notes", "project"];
 
 function Header() {
   const pathname = usePathname();

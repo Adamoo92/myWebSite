@@ -2,7 +2,6 @@ import { poppins } from "./fonts";
 import Header from "./components/header";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-import Head from "next/head";
 
 import "./globals.css";
 
