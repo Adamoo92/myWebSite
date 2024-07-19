@@ -56,14 +56,14 @@ export default function HomePage() {
       <Image
         src={designHigh}
         alt="design_high_text"
-        className="absolute h-1/4 w-auto top-[20%]"
+        className="absolute h-1/4 w-auto top-[20%] select-none"
       />
       <Image
         src={moveNow}
         alt="move_now_text"
-        className="absolute h-1/7 w-auto top-[50%] ml-[50%]"
+        className="absolute h-1/7 w-auto top-[50%] ml-[50%] select-none"
       />
-      <div className="w-screen h-screen relative">
+      <div className="w-screen h-screen relative select-none">
         <RiveComponent />
       </div>
     </section>
