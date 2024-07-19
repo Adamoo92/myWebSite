@@ -1,14 +1,12 @@
 import FirstScreen from "./components/firstScreen";
 import Experience from "./components/experience";
 import Graphic from "./components/graphic";
-import UserInterface from "./components/userInterface";
-
-import "./about.css";
-import BottomNavigation from "./components/bottomNavigation";
 import GraphicPoster from "./components/graphicPoster";
 import GraphicPackage from "./components/graphicPackage";
 import Tools from "./components/tools";
 import GraphicLogo2 from "./components/graphicLogo2";
+
+import "./about.css";
 
 export default function About() {
   return (

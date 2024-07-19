@@ -40,6 +40,7 @@ function FirstScreen(props) {
               src="/image/about/firstScreen/newspaper.svg"
               fill
               quality={100}
+              alt="newspaper"
             />
           </motion.div>
           <motion.div
@@ -52,6 +53,7 @@ function FirstScreen(props) {
               src="/image/about/firstScreen/idcard.svg"
               fill
               quality={100}
+              alt="idcard"
             />
           </motion.div>
         </motion.div>
@@ -65,6 +67,7 @@ function FirstScreen(props) {
             src="/image/about/firstScreen/character.png"
             fill
             quality={100}
+            alt="character"
           />
         </motion.div>
       </div>
