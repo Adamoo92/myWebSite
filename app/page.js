@@ -1,7 +1,7 @@
 import { Raleway } from "next/font/google";
 import DetailLine from "./components/detailLine";
 import Contack from "./components/contack";
-import Head from "next/head";
+import HomePage from "./components/homePage";
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -13,19 +13,8 @@ const raleway = Raleway({
 export default function Home() {
   return (
     <>
-      <div className="text-ownBlack w-full h-full flex justify-center items-center">
-        <div>
-          <div className="title flex gap-8">
-            <DetailLine />
-            <div
-              className={`${raleway.className} text-8xl italic uppercase select-none`}
-            >
-              <h1>Welcome to</h1>
-              <h1>my website</h1>
-            </div>
-          </div>
-          {/* <Button>Read More</Button> */}
-        </div>
+      <div className="w-full h-full flex justify-center items-center">
+        <HomePage />
       </div>
       <Contack />
     </>
