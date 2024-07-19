@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import catpng from "/public/image/home/cat.png";
 import designHigh from "/public/image/home/design_high.svg";
 import moveNow from "/public/image/home/move_now.svg";
 import {
