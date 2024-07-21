@@ -1,73 +1,66 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 
 const menuList = ["home", "about", "notes", "project"];
 
 function Header() {
   const pathname = usePathname();
+  const router = useRouter();
+  const [selected, setSelected] = useState("");
+
+  useEffect(() => {
+    if (pathname) {
+      if (pathname == "/") {
+        setSelected("home");
+      } else {
+        setSelected(pathname.slice(1));
+      }
+    }
+  }, [pathname]);
 
   return (
-    <header className="header w-full h-max flex text-base font-light fixed top-4 z-[9999]">
-      <div className="header-left flex-1 flex">
-        <Link href="/" className="block w-max h-full pl-10 flex items-center">
-          <Image src="image/logo.svg" width={150} height={48} alt="logo" />
-        </Link>
+    <header className="header w-full h-20 flex fixed top-4 z-[9999]">
+      <div className="header-logo flex-1">
+        <Image
+          src="/image/logo.svg"
+          width={150}
+          height={48}
+          alt="header-logo"
+          priority
+          className="ml-10 my-4 cursor-pointer"
+          onClick={() => router.push("/")}
+        />
       </div>
-      <menu
-        className="header-menu flex-none text-white flex px-20 rounded-full capitalize"
-        style={{
-          background: "rgba(14, 14, 15, 0.95)",
-          backdropFilter: "blur(4px)",
-        }}
-      >
+      <menu className="header-menu flex-none px-8 flex bg-[#0E0E0FF2] backdrop-blur-sm rounded-full">
         {menuList.map((item, i) => (
-          <motion.li
+          <li
             key={i}
-            className="w-32 h-20 flex justify-center items-center relative"
-            style={{
-              color:
-                pathname.slice(1) === item ||
-                (pathname.slice(1) === "" && i == 0)
-                  ? "#191811"
-                  : "rgba(255,255,255,0.5)",
-              fontWeight:
-                pathname.slice(1) === item ||
-                (pathname.slice(1) === "" && i == 0)
-                  ? 500
-                  : 300,
-            }}
-            whileHover={{
-              color:
-                pathname.slice(1) === item ||
-                (pathname.slice(1) === "" && i == 0)
-                  ? "#191811"
-                  : "rgba(255,255,255,1)",
-            }}
+            className="w-28 h-full flex justify-center items-center relative selected-none cursor-pointer"
+            onClick={() => router.push(i == 0 ? "/" : `/${item}`)}
           >
-            {pathname.slice(1) === item ||
-            (pathname.slice(1) === "" && i == 0) ? (
+            {selected === item && (
               <motion.span
+                className="w-24 h-11 absolute bg-ownRed-900 rounded-full"
                 layoutId="item-bg"
-                className="w-24 h-11 bg-ownRed-900 absolute rounded-full"
               />
-            ) : (
-              <></>
             )}
-            <Link
-              href={`/${item === "home" ? "" : item}`}
-              className="block w-24 h-11 flex justify-center items-center relative"
+            <span
+              className="relative capitalize text-white/50 hover:text-white/70"
+              style={{
+                fontWeight: item == selected ? 500 : 300,
+                color: item === selected && "rgba(0,0,0,1)",
+              }}
             >
               {item}
-            </Link>
-          </motion.li>
+            </span>
+          </li>
         ))}
       </menu>
-      <div className="header-right flex-1 flex items-center justify-end">
-        {/* <Button /> */}
-      </div>
+      <div className="flex-1"></div>
     </header>
   );
 }

@@ -6,7 +6,7 @@ import useMeasure from "react-use-measure";
 import { ResizeObserver } from "@juggle/resize-observer";
 import { mergeRefs } from "react-merge-refs";
 
-function FirstScreen(props) {
+function FirstScreen() {
   const [ref, bounds] = useMeasure({ scroll: true, polyfill: ResizeObserver });
   const inViewRef = useRef(null);
   const isInView = useInView(inViewRef, { once: false });

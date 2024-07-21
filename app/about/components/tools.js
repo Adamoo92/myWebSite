@@ -109,7 +109,7 @@ const ToolsButton = (props) => {
   );
 };
 
-function Tools(props) {
+function Tools() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.4 });
   const [selected, setSelected] = useState(0);

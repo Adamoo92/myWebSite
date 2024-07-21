@@ -3,6 +3,11 @@ import { useRef } from "react";
 import Image from "next/image";
 import { useInView, motion, AnimatePresence } from "framer-motion";
 import { Player } from "@lottiefiles/react-lottie-player";
+import Line1 from "../../../public/image/about/experience/line/line_1.svg";
+import Line2 from "../../../public/image/about/experience/line/line_2.svg";
+import Line3 from "../../../public/image/about/experience/line/line_3.svg";
+import Line4 from "../../../public/image/about/experience/line/line_4.svg";
+import RudderSvg from "../../../public/image/about/experience/rudder.svg";
 
 // title
 const ExperTitle = () => {
@@ -11,7 +16,7 @@ const ExperTitle = () => {
 
   return (
     <div
-      className="experience-title w-full flex justify-center"
+      className="experience-title w-full flex justify-center mb-16"
       style={{ height: 256 }}
       ref={titleRef}
     >
@@ -644,191 +649,146 @@ const HardWork = () => {
   );
 };
 
-// Export Experience
-function Experience(props) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: false });
-
+const WorkOne = () => {
   return (
-    <section
-      className="about-experience-container mt-32 overflow-hidden relative flex flex-col items-center gap-16"
-      ref={ref}
-    >
-      <ExperTitle isInView={isInView} />
-      <div className="experience-content w-full flex flex-col items-center">
-        <HandCode />
-        <div
-          className="experience-content-1 w-full relative flex justify-center"
-          style={{ height: 480 }}
-        >
-          <div
-            className="flex gap-4 w-max h-max absolute items-center"
-            style={{ top: 100 }}
-          >
-            <Player
-              autoplay
-              loop
-              src="https://lottie.host/53d6814b-59b4-4b85-a6dc-695fd9125c64/veQeIUCEoT.json"
-              style={{ width: 440, height: 360 }}
-            />
-            <div className="flex flex-col font-sans gap-3">
-              <div className="text-orange-500">
-                <h1 className="text-3xl font-bold">麦凯莱</h1>
-                <h4 className="text-sm font-medium mt-1">2019.11 - Now</h4>
-              </div>
-              <div className="text-ownBlack">
-                <h3 className="text-lg font-bold">UI/UX</h3>
-                <p className="text-base font-normal mt-0.5">
-                  MegaLab商城 - App页面设计、小程序页面设计、后台页面设计。
-                </p>
-                <p className="text-base font-normal">
-                  吉时到 - Apps页面设计、页面交互设计、动效设计。
-                </p>
-              </div>
-              <div className="text-ownBlack">
-                <h3 className="text-lg font-bold">电商</h3>
-                <p className="text-base font-normal mt-0.5">
-                  ultraDEX / smilelab / Dentyl / Braun -
-                  首页设计、活动页面设计、详情页设计。
-                </p>
-              </div>
-            </div>
+    <div className="w-full relative h-[480px] flex items-end">
+      <div className="w-full h-max flex items-center gap-8">
+        <Player
+          autoplay
+          loop
+          src="https://lottie.host/53d6814b-59b4-4b85-a6dc-695fd9125c64/veQeIUCEoT.json"
+          style={{ width: 440, height: 360 }}
+          className="flex-none h-max"
+        />
+        <div className="flex-1 flex flex-col gap-3">
+          <div className="flex flex-col gap-1 text-[#F97316]">
+            <h1 className="font-sans text-3xl font-bold">麦凯莱</h1>
+            <span className="text-sm font-medium">2019.11 - Now</span>
           </div>
-          <Image
-            src="./image/about/experience/line/line_1.svg"
-            width={1200}
-            height={482}
-            alt="experience-line-1"
-            className="absolute pointer-events-none"
-          />
-          <motion.div
-            className="absolute w-max h-max"
-            style={{ left: 540, top: 40 }}
-            animate={{ rotate: [170, 140, 170] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Image
-              src="./image/about/experience/triangle.svg"
-              width={66}
-              height={66}
-              alt="experience-triangle"
-              className="pointer-events-none"
-            />
-          </motion.div>
-        </div>
-        <div
-          className="experience-content-2 w-full relative flex justify-center"
-          style={{ height: 400 }}
-        >
-          <div className="flex gap-10 items-end">
-            <div className="flex flex-col font-sans gap-3 h-full justify-center">
-              <div className="text-lime-600 flex flex-col items-end">
-                <h1 className="text-3xl font-bold">艾舜优</h1>
-                <h4 className="text-sm font-medium mt-1">2018.03 - 2019.10</h4>
-              </div>
-              <div className="text-ownBlack">
-                <p className="text-base font-normal mt-0.5">
-                  工作内容：品牌LOGO、VIS视觉应用、产品包装设计、宣传海报设计
-                </p>
-                <p className="text-base font-normal">
-                  主要品牌：森林魔方、爱呼吸、艾舜优...
-                </p>
-              </div>
-            </div>
-            <Windmill />
+          <div className="w-full flex flex-col gap-0.5 text-ownBlack font-sans">
+            <h3 className="font-bold text-lg">UI/UX</h3>
+            <p className="text-base font-normal">
+              MegaLab商城 - App页面设计、小程序页面设计、后台页面设计。
+              <br />
+              吉时到 - Apps页面设计、页面交互设计、动效设计。
+            </p>
           </div>
-          <Image
-            src="./image/about/experience/line/line_2.svg"
-            width={1200}
-            height={452}
-            alt="experience-line-2"
-            className="absolute pointer-events-none"
-            style={{ top: -2 }}
-          />
-        </div>
-        <div
-          className="experience-content-3 w-full relative flex justify-center"
-          style={{ height: 400 }}
-        >
-          <div className="flex gap-10 items-end">
-            <CarPlay />
-            <div className="flex flex-col font-sans gap-3 h-full justify-center">
-              <div className="text-indigo-500 flex flex-col">
-                <h1 className="text-3xl font-bold">旗丰</h1>
-                <h4 className="text-sm font-medium mt-1">2016.06 - 2018.03</h4>
-              </div>
-              <div className="text-ownBlack">
-                <p
-                  className="text-base font-normal mt-0.5 text-justify"
-                  style={{ width: 400 }}
-                >
-                  工作内容：企业VIS视觉系统更新、产品包装设计、设备外观设计、产品宣传广告设计、企业网站改版、微信商城设计、宣传PPT制作、公众号定期更新、H5设计。
-                </p>
-              </div>
-            </div>
+          <div className="w-full flex flex-col gap-0.5 text-ownBlack font-sans">
+            <h3 className="font-bold text-lg">电商</h3>
+            <p className="text-base font-normal text-justify">
+              ultraDEX / smilelab / Dentyl / Braun -
+              首页设计、活动页面设计、详情页设计。
+            </p>
           </div>
-          <Image
-            src="./image/about/experience/line/line_3.svg"
-            width={1200}
-            height={440}
-            alt="experience-line-3"
-            className="absolute pointer-events-none"
-            style={{ top: -20 }}
-          />
-        </div>
-        <div
-          className="experience-content-4 w-full relative flex justify-center"
-          style={{ height: 520 }}
-        >
-          <div
-            className="flex gap-10 items-center h-max"
-            style={{ marginTop: 40 }}
-          >
-            <div className="flex flex-col font-sans gap-3 h-full justify-center">
-              <div className="text-pink-500 flex flex-col items-end">
-                <h1 className="text-3xl font-bold">共赢策划</h1>
-                <h4 className="text-sm font-medium mt-1">2013.05 - 2016.05</h4>
-              </div>
-              <div className="text-ownBlack">
-                <p
-                  className="text-base font-normal mt-0.5 text-justify"
-                  style={{ width: 480 }}
-                >
-                  工作内容：品牌LOGO、VI视觉系统、企业宣传画册、展厅设计、产品包装设计、营销活动主KV设计、会议物料设计制作。
-                  服务品牌：龙升有机食品、冷链物流、派慕蛋糕、缤纷五洲地产、央视诚信档案节目、地龙芯宝（保健）、沃佳饮料、沂蒙小山村（白酒）、中国邮政...
-                </p>
-              </div>
-            </div>
-            <HardWork />
-          </div>
-          <Image
-            src="./image/about/experience/line/line_4.svg"
-            width={1200}
-            height={522}
-            alt="experience-line-4"
-            className="absolute pointer-events-none"
-            style={{ top: -2 }}
-          />
-        </div>
-        <div className="experience-rudder w-40 h-40 border-4 border-ownDarkPurple rounded-full flex justify-center items-center relative">
-          <motion.div
-            className="w-max h-max"
-            style={{ rotate: 40 }}
-            animate={{ rotate: [40, -40, 40] }}
-            transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
-          >
-            <Image
-              src="/image/about/experience/rudder.svg"
-              width={140}
-              height={140}
-              alt="about-experience-icon-rudder"
-            />
-          </motion.div>
-        </div>
-        <div className="experience-bottom-line w-full h-32 flex justify-center">
-          <div className="w-1 h-full bg-ownDarkPurple" />
         </div>
       </div>
+      <Image
+        src={Line1}
+        className="absolute top-0 left-0 select-none pointer-events-none"
+      />
+    </div>
+  );
+};
+
+const WorkTwo = () => {
+  return (
+    <div className="w-full relative h-[400px] flex items-end">
+      <div className="w-full h-max flex items-center gap-8">
+        <div className="flex-1 flex flex-col items-end gap-3">
+          <div className="flex flex-col gap-1 items-end text-[#65A30D]">
+            <h1 className="font-sans text-3xl font-bold">艾舜优</h1>
+            <span className="text-sm font-medium">2018.03 - 2019.10</span>
+          </div>
+          <div className="w-full flex flex-col gap-0.5 text-ownBlack font-sans">
+            <p className="text-base font-normal text-justify">
+              工作内容：品牌LOGO、VIS视觉应用、产品包装设计、宣传海报设计
+              主要品牌：森林魔方、爱呼吸、艾舜优...
+            </p>
+          </div>
+        </div>
+        <Windmill />
+      </div>
+      <Image
+        src={Line2}
+        className="absolute -top-0.5 left-0 select-none pointer-events-none"
+      />
+    </div>
+  );
+};
+
+const WorkThree = () => {
+  return (
+    <div className="w-full relative h-[400px] flex items-end">
+      <div className="w-full h-max flex items-center gap-8 ml-12">
+        <CarPlay />
+        <div className="flex-1 flex flex-col gap-3">
+          <div className="flex flex-col gap-1 text-[#6366F1]">
+            <h1 className="font-sans text-3xl font-bold">旗丰</h1>
+            <span className="text-sm font-medium">2016.06 - 2018.03</span>
+          </div>
+          <div className="w-full flex flex-col gap-0.5 text-ownBlack font-sans">
+            <p className="text-base font-normal text-justify">
+              工作内容：企业VIS视觉系统更新、产品包装设计、设备外观设计、产品宣传广告设计、企业网站改版、微信商城设计、宣传PPT制作、公众号定期更新、H5设计。
+            </p>
+          </div>
+        </div>
+      </div>
+      <Image
+        src={Line3}
+        className="absolute -top-5 left-0 select-none pointer-events-none"
+      />
+    </div>
+  );
+};
+
+const WorkFour = () => {
+  return (
+    <div className="w-full relative h-[520px] flex items-end pb-2">
+      <div className="w-full h-max flex items-center gap-8 mb-28">
+        <div className="flex-1 flex flex-col items-end gap-3">
+          <div className="flex flex-col gap-1 items-end text-[#EC4899]">
+            <h1 className="font-sans text-3xl font-bold">共赢策划</h1>
+            <span className="text-sm font-medium">2013.05 - 2016.05</span>
+          </div>
+          <div className="w-full flex flex-col gap-0.5 text-ownBlack font-sans">
+            <p className="text-base font-normal text-justify">
+              工作内容：品牌LOGO、VI视觉系统、企业宣传画册、展厅设计、产品包装设计、营销活动主KV设计、会议物料设计制作。
+              服务品牌：龙升有机食品、冷链物流、派慕蛋糕、缤纷五洲地产、央视诚信档案节目、地龙芯宝（保健）、沃佳饮料、沂蒙小山村（白酒）、中国邮政...
+            </p>
+          </div>
+        </div>
+        <HardWork />
+      </div>
+      <Image
+        src={Line4}
+        className="absolute -top-0.5 left-0 select-none pointer-events-none"
+      />
+    </div>
+  );
+};
+
+const Rudder = () => {
+  return (
+    <div className="w-full flex flex-col items-center">
+      <motion.div className="w-max p-2.5 border-4 border-[#27043E] rounded-full">
+        <Image src={RudderSvg} alt="rubber" />
+      </motion.div>
+      <div className="w-1/2 h-32 border-r-4 border-[#27043E] -translate-x-1/2"></div>
+    </div>
+  );
+};
+
+// Export Experience
+function Experience() {
+  return (
+    <section className="about-experience w-full mt-28 flex flex-col items-center">
+      <ExperTitle />
+      <HandCode />
+      <WorkOne />
+      <WorkTwo />
+      <WorkThree />
+      <WorkFour />
+      <Rudder />
     </section>
   );
 }

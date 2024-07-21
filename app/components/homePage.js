@@ -11,12 +11,8 @@ import {
   Alignment,
 } from "@rive-app/react-canvas-lite";
 import { useEffect, useState } from "react";
-import useMeasure from "react-use-measure";
-import { ResizeObserver } from "@juggle/resize-observer";
 
 export default function HomePage() {
-  const [ref, bounds] = useMeasure({ polyfill: ResizeObserver });
-
   const { rive, RiveComponent } = useRive({
     src: "/image/home/cat.riv",
     autoplay: true,
@@ -30,8 +26,6 @@ export default function HomePage() {
 
   const [screenSize, setScreenSize] = useState({});
 
-  console.log(screenSize);
-
   const xAxisInput = useStateMachineInput(rive, "CatMotion", "xAxis");
   const yAxisInput = useStateMachineInput(rive, "CatMotion", "yAxis");
 
@@ -41,8 +35,6 @@ export default function HomePage() {
       const bodyRect = body.getBoundingClientRect();
       setScreenSize({ w: bodyRect.width, h: bodyRect.height });
     }
-
-    // setScreenSize({ w: bounds.width, h: bounds.height });
   }, []);
 
   useEffect(() => {
@@ -59,10 +51,7 @@ export default function HomePage() {
   }, [screenSize.w, screenSize.h, xAxisInput, yAxisInput]);
 
   return (
-    <section
-      className="w-screen h-screen flex justify-center bg-[#3DB5C3] relative"
-      ref={ref}
-    >
+    <section className="w-screen h-screen flex justify-center bg-[#3DB5C3] relative">
       <Image
         src={designHigh}
         alt="design_high_text"
