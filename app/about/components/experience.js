@@ -33,6 +33,7 @@ const ExperTitle = () => {
                 animate={{ rotateY: 0, opacity: 1 }}
                 exit={{ rotateY: 70, opacity: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
+                key="title-work"
               >
                 Work
               </motion.h1>
@@ -42,6 +43,7 @@ const ExperTitle = () => {
                 animate={{ rotateY: 0, opacity: 1 }}
                 exit={{ rotateY: -70, opacity: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
+                key="title-experience"
               >
                 Experience
               </motion.h1>
@@ -51,6 +53,7 @@ const ExperTitle = () => {
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: -40, opacity: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
+                key="title-button-rightArrow"
               >
                 <Image
                   src="/image/about/experience/rightBottomArrow.svg"
@@ -73,6 +76,7 @@ const ExperTitle = () => {
                   delay: 0.8,
                   opacity: { delay: 0.8, duration: 0.1 },
                 }}
+                key="title-work-experience"
               >
                 工作经历
               </motion.div>
@@ -90,6 +94,7 @@ const ExperTitle = () => {
                   delay: 0.8,
                   opacity: { delay: 0.8, duration: 0.1 },
                 }}
+                key="title-time"
               >
                 2013-2024
               </motion.div>
@@ -685,6 +690,7 @@ const WorkOne = () => {
       <Image
         src={Line1}
         className="absolute top-0 left-0 select-none pointer-events-none"
+        alt="about-experience-line1"
       />
     </div>
   );
@@ -711,6 +717,7 @@ const WorkTwo = () => {
       <Image
         src={Line2}
         className="absolute -top-0.5 left-0 select-none pointer-events-none"
+        alt="about-experience-line2"
       />
     </div>
   );
@@ -736,6 +743,7 @@ const WorkThree = () => {
       <Image
         src={Line3}
         className="absolute -top-5 left-0 select-none pointer-events-none"
+        alt="about-experience-line3"
       />
     </div>
   );
@@ -762,6 +770,7 @@ const WorkFour = () => {
       <Image
         src={Line4}
         className="absolute -top-0.5 left-0 select-none pointer-events-none"
+        alt="about-experience-line4"
       />
     </div>
   );
