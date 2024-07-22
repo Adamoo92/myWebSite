@@ -49,8 +49,11 @@ const MenuBar = (props) => {
         </div>
         <div className="flex gap-2 font-semibold text-xs">
           {menuRight.map((src, i) => (
-            <div className="bg-[#343434] p-1.5 rounded-lg cursor-pointer hover:bg-[#282828] transition-all ease duration-200">
-              <Image src={src} key={i} alt="icon" />
+            <div
+              key={i}
+              className="bg-[#343434] p-1.5 rounded-lg cursor-pointer hover:bg-[#282828] transition-all ease duration-200"
+            >
+              <Image src={src} alt="icon" />
             </div>
           ))}
           <div className="bg-[#343434] p-1.5 rounded-lg cursor-pointer hover:bg-[#282828] transition-all ease duration-200 flex items-center px-2.5">

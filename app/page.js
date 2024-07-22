@@ -23,7 +23,7 @@ export default function Home() {
     }),
   });
 
-  const [screenSize, setScreenSize] = useState({});
+  const [screenSize, setScreenSize] = useState({ w: null, h: null });
 
   const xAxisInput = useStateMachineInput(rive, "CatMotion", "xAxis");
   const yAxisInput = useStateMachineInput(rive, "CatMotion", "yAxis");
