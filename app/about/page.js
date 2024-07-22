@@ -4,7 +4,7 @@ import Graphic from "./components/graphic";
 import GraphicPoster from "./components/graphicPoster";
 import GraphicPackage from "./components/graphicPackage";
 import Tools from "./components/tools";
-import GraphicLogo2 from "./components/graphicLogo2";
+import GraphicLogo from "./components/graphicLogo";
 
 import "./about.css";
 
@@ -16,7 +16,7 @@ export default function About() {
         <Tools />
         <Experience />
         <Graphic />
-        <GraphicLogo2 />
+        <GraphicLogo />
         <GraphicPoster />
         <GraphicPackage />
         {/* <UserInterface /> */}

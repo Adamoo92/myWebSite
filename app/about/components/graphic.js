@@ -3,8 +3,31 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { motion, transform } from "framer-motion";
 import Link from "next/link";
+import LogoSvg from "../../../public/image/about/graphic/cover/logo.svg";
+import PosterSvg from "../../../public/image/about/graphic/cover/poster.svg";
+import PackageSvg from "../../../public/image/about/graphic/cover/package.svg";
+import FontSvg from "../../../public/image/about/graphic/cover/fonts.svg";
 
-const Card = ({ src, title, bg, href }) => {
+const cardList = [
+  { name: "logo", src: LogoSvg, bg: "#EC5D4D", href: "#graphic-logo" },
+  {
+    name: "poster",
+    src: PosterSvg,
+    bg: "#FDCA49",
+    href: "#graphic-poster",
+  },
+  {
+    name: "package",
+    src: PackageSvg,
+    bg: "#7EB964",
+    href: "",
+  },
+  { name: "fonts", src: FontSvg, bg: "#4FBDEE", href: "" },
+];
+
+const Card = (props) => {
+  const { src, name, backgroundColor, href } = props;
+
   const ref = useRef();
 
   const [rotateX, setRotateX] = useState(0);
@@ -19,8 +42,15 @@ const Card = ({ src, title, bg, href }) => {
     const y =
       clientY -
       (element.getBoundingClientRect().top + element.offsetHeight / 2);
-    setRotateY(transform([-130, 130], [-8, 8])(x));
-    setRotateX(transform([-180, 180], [8, -8])(y));
+    setRotateY(
+      transform([-element.offsetWidth / 2, element.offsetWidth / 2], [-8, 8])(x)
+    );
+    setRotateX(
+      transform(
+        [-element.offsetHeight / 2, element.offsetHeight / 2],
+        [8, -8]
+      )(y)
+    );
   };
 
   const handlePointerLeave = () => {
@@ -30,22 +60,20 @@ const Card = ({ src, title, bg, href }) => {
 
   return (
     <div
-      className="w-max h-max flex flex-col items-center gap-8"
+      className="flex-1 h-max flex flex-col items-center gap-8"
       style={{ perspective: 800 }}
     >
       <motion.div
         ref={ref}
-        className="rounded-2xl overflow-hidden"
+        className="w-full rounded-2xl overflow-hidden cursor-pointer"
         style={{
-          width: 260,
-          height: 360,
-          backgroundColor: bg,
-          cursor: "pointer",
+          height: 300,
+          backgroundColor,
           rotateX,
           rotateY,
         }}
         whileHover={{
-          boxShadow: `0px 40px 60px -28px ${bg}`,
+          boxShadow: `0px 40px 60px -28px ${backgroundColor}`,
           scale: 1.05,
         }}
         transition={{ duration: 0.4 }}
@@ -53,12 +81,11 @@ const Card = ({ src, title, bg, href }) => {
         onPointerLeave={handlePointerLeave}
       >
         <Link href={href || ""}>
-          <Image src={src} width={260} height={360} alt="graphic-cover" />
+          <Image src={src} alt="graphic-cover" className="h-full" />
         </Link>
       </motion.div>
-
       <h2 className="font-sans font-semibold text-xl text-ownBlack capitalize">
-        {title}
+        {name}
       </h2>
     </div>
   );
@@ -97,7 +124,7 @@ const Adorn = () => {
         height={42}
         alt="graphic-adorn-minus"
         className="absolute"
-        style={{ right: 526, top: 19, transform: "rotate(-60deg)" }}
+        style={{ right: 232, bottom: 20, transform: "rotate(-60deg)" }}
       />
       <Image
         src="./image/about/graphic/adorn/division.svg"
@@ -105,7 +132,7 @@ const Adorn = () => {
         height={42}
         alt="graphic-adorn-division"
         className="absolute"
-        style={{ right: 440, top: 14, transform: "rotate(30deg)" }}
+        style={{ right: 133, bottom: 36, transform: "rotate(30deg)" }}
       />
       <Image
         src="./image/about/graphic/adorn/multiply.svg"
@@ -113,7 +140,7 @@ const Adorn = () => {
         height={42}
         alt="graphic-adorn-multiply"
         className="absolute"
-        style={{ right: 420, top: 73, transform: "rotate(60deg)" }}
+        style={{ right: 40, bottom: 26, transform: "rotate(60deg)" }}
       />
       <Image
         src="./image/about/graphic/adorn/add.svg"
@@ -121,16 +148,44 @@ const Adorn = () => {
         height={42}
         alt="graphic-adorn-add"
         className="absolute"
-        style={{ right: 359, top: 17, transform: "rotate(20deg)" }}
+        style={{ right: 15, bottom: 92, transform: "rotate(20deg)" }}
       />
     </div>
   );
 };
 
-function Graphic(props) {
+function Title() {
+  return (
+    <div className="graphic-title-all flex items-center gap-8">
+      <div className="graphic-title  w-max h-max px-1 py-4 pb-8 border-4 border-indigo-500 relative">
+        <span className="absolute w-4 h-4 bg-white border-4 border-indigo-500 left-[-10px] top-[-10px]" />
+        <span className="absolute w-4 h-4 bg-white border-4 border-indigo-500 right-[-10px] top-[-10px]" />
+        <span className="absolute w-4 h-4 bg-white border-4 border-indigo-500 right-[-10px] bottom-[-10px]" />
+        <span className="absolute w-4 h-4 bg-white border-4 border-indigo-500 left-[-10px] bottom-[-10px]" />
+        <span className="font-bold text-8xl text-ownBlack">Graphic</span>
+      </div>
+      <div className="graphic-subtitle flex h-max">
+        <div className="p-1 bg-indigo-500 w-max h-max">
+          <Image
+            src="./image/about/close-light.svg"
+            width={28}
+            height={28}
+            alt="icon-close-light"
+          />
+        </div>
+        <div className="w-2 h-9 bg-[#FDCA49]" />
+        <div className="bg-indigo-500 text-white font-sans font-normal text-2xl px-1 py-0.5">
+          平面设计
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function Graphic() {
   return (
     <div
-      className="about-graphic w-full h-max border-4 border-ownDarkPurple p-8 relative"
+      className="about-graphic w-full h-max border-4 border-ownDarkPurple p-8 pb-10 relative"
       style={{
         background:
           "linear-gradient(to right,#E7E7E7 2px, transparent 2px),linear-gradient(to bottom,#E7E7E7 2px, transparent 2px)",
@@ -139,55 +194,18 @@ function Graphic(props) {
       }}
     >
       <Adorn />
-      <div className="graphic-title-all flex items-center gap-8">
-        <div className="graphic-title font-bold text-9xl text-ownBlack w-max h-max px-1 py-4 pb-8 border-4 border-indigo-500 relative">
-          <span className="absolute w-4 h-4 bg-white border-4 border-indigo-500 left-[-10px] top-[-10px]" />
-          <span className="absolute w-4 h-4 bg-white border-4 border-indigo-500 right-[-10px] top-[-10px]" />
-          <span className="absolute w-4 h-4 bg-white border-4 border-indigo-500 right-[-10px] bottom-[-10px]" />
-          <span className="absolute w-4 h-4 bg-white border-4 border-indigo-500 left-[-10px] bottom-[-10px]" />
-          <span>Graphic</span>
-        </div>
-        <div className="graphic-subtitle flex h-max">
-          <div className="p-1 bg-indigo-500 w-max h-max">
-            <Image
-              src="./image/about/close-light.svg"
-              width={28}
-              height={28}
-              alt="icon-close-light"
-            />
-          </div>
-          <div className="w-2 h-9 bg-[#FDCA49]" />
-          <div className="bg-indigo-500 text-white font-sans font-normal text-2xl px-1 py-0.5">
-            平面设计
-          </div>
-        </div>
-      </div>
-      <div className="graphic-card-all flex justify-center gap-10 mt-28 mb-20">
-        <Card
-          src="./image/about/graphic/cover/logo.svg"
-          bg="#EC5D4D"
-          title="logo"
-          href="#graphic-logo"
-        />
-        <Card
-          src="./image/about/graphic/cover/poster.svg"
-          bg="#FDCA49"
-          title="poster"
-          href="#graphic-poster"
-        />
-        <Card
-          src="./image/about/graphic/cover/package.svg"
-          bg="#7EB964"
-          title="package"
-        />
-        <Card
-          src="./image/about/graphic/cover/fonts.svg"
-          bg="#4FBDEE"
-          title="fonts"
-        />
+      <Title />
+      <div className="graphic-card-all flex justify-center gap-8 my-20">
+        {cardList.map((card, i) => (
+          <Card
+            key={i}
+            src={card.src}
+            backgroundColor={card.bg}
+            name={card.name}
+            href={card.href}
+          />
+        ))}
       </div>
     </div>
   );
 }
-
-export default Graphic;
