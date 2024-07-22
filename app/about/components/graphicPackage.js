@@ -2,6 +2,7 @@
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import CloseIcon from "@/public/image/about/graphicPackage/closeIcon.svg";
 
 const grid = [
   [0, 1, 2, 3],
@@ -12,7 +13,7 @@ const grid = [
 const initialGridTemplateColumns = ["1fr", "1fr", "1fr", "1fr"];
 const initialGridTemplateRows = ["1fr", "1fr", "1fr"];
 
-function GraphicPackage(props) {
+function GraphicPackage() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false });
   const [selected, setSelected] = useState(null);
@@ -63,9 +64,9 @@ function GraphicPackage(props) {
         </div>
       </div>
       <motion.div
-        className="graphic-package-container w-full p-5 grid gap-5"
+        className="graphic-package-container w-full grid gap-5 auto-rows-max"
         style={{
-          height: 965,
+          height: 1024,
         }}
         animate={{
           gridTemplateColumns: gridTemplateColumns
@@ -78,7 +79,7 @@ function GraphicPackage(props) {
           row.map((item, colIndex) => (
             <motion.div
               key={item}
-              className={`graphic-package-${item} overflow-hidden rounded-3xl cursor-pointer relative`}
+              className={`graphic-package-${item} overflow-hidden rounded-3xl w-full aspect-square cursor-pointer relative`}
               onClick={() => handleClick(rowIndex, colIndex, item)}
               initial={{ opacity: 0, scale: 1.6 }}
               animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 1.6 }}
@@ -96,7 +97,7 @@ function GraphicPackage(props) {
                   backgroundSize: "cover",
                   backgroundPosition: "center center",
                 }}
-              ></motion.div>
+              />
               <AnimatePresence>
                 {item === selected ? (
                   <motion.div
@@ -107,12 +108,7 @@ function GraphicPackage(props) {
                     exit={{ scale: 0.4, opacity: 0 }}
                     whileHover={{ scale: 1.2 }}
                   >
-                    <Image
-                      src="/image/about/graphicPackage/closeIcon.svg"
-                      width={32}
-                      height={32}
-                      alt="graphic-package-close"
-                    />
+                    <Image src={CloseIcon} alt="graphic-package-close" />
                   </motion.div>
                 ) : selected === null ? (
                   <></>

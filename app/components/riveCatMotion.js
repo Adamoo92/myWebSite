@@ -1,23 +1,19 @@
 "use client";
-
-import Image from "next/image";
-import designHigh from "/public/image/home/design_high.svg";
-import moveNow from "/public/image/home/move_now.svg";
+import { useEffect, useState } from "react";
 import {
   useRive,
   useStateMachineInput,
   Layout,
   Fit,
   Alignment,
-} from "@rive-app/react-canvas-lite";
-import { useEffect, useState } from "react";
+} from "@rive-app/react-canvas";
 
-export default function HomePage() {
+export default function RiveCatMotion({ src, artboard, stateMachines }) {
   const { rive, RiveComponent } = useRive({
-    src: "/image/home/cat.riv",
+    src: src,
     autoplay: true,
-    artboard: "cat",
-    stateMachines: "CatMotion",
+    artboard: artboard,
+    stateMachines: stateMachines,
     layout: new Layout({
       fit: Fit.FitHeight,
       alignment: Alignment.Center,
@@ -50,21 +46,5 @@ export default function HomePage() {
     };
   }, [screenSize.w, screenSize.h, xAxisInput, yAxisInput]);
 
-  return (
-    <section className="w-screen h-screen flex justify-center bg-[#3DB5C3] relative">
-      <Image
-        src={designHigh}
-        alt="design_high_text"
-        className="absolute h-1/4 w-auto top-[20%] select-none"
-      />
-      <Image
-        src={moveNow}
-        alt="move_now_text"
-        className="absolute h-1/7 w-auto top-[50%] ml-[50%] select-none"
-      />
-      <div className="w-screen h-screen relative select-none">
-        <RiveComponent />
-      </div>
-    </section>
-  );
+  return <RiveComponent />;
 }
