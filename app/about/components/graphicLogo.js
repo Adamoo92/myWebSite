@@ -223,8 +223,6 @@ export default function GraphicLogo() {
     }
   }, [bounds]);
 
-  console.log(show);
-
   const y = transform(
     [0, -bounds.height / 3],
     [-bounds.height / 3, 0]

@@ -9,8 +9,6 @@ import BookOpen from "./components/bookOpen";
 export default function Notes() {
   const [selected, setSelected] = useState(null);
 
-  console.log(selected);
-
   return (
     <section className="text-ownBlack bg-[#FFDC9B] w-full h-full flex flex-col justify-start items-center relative">
       {/* <div className="w-full max-w-7xl h-full relative pt-32 grid grid-cols-5 gap-y-2.5 auto-rows-min">
