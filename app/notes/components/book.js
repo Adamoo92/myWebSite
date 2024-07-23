@@ -2,56 +2,38 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
+import { cx } from "@/app/utils";
 
-export default function Book({ icon, bgColor, onClick }) {
+export default function Book(props) {
+  const { src, style, onClick, Num, title1, title2, time, className } = props;
   const [hover, setHover] = useState(false);
 
   return (
-    <div className="noteBook w-64 h-64 px-12 py-4 relative">
-      <div
-        className="w-full h-full flex justify-end relative cursor-pointer"
-        onPointerEnter={() => setHover(true)}
-        onPointerLeave={() => setHover(false)}
-        style={{ perspective: 800 }}
-        onClick={onClick}
-      >
-        <motion.div
-          className="noteBook-bottom w-36 h-full border border-white rounded-xl p-3 absolute"
-          style={{
-            background: bgColor
-              ? `linear-gradient(0deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.06) 100%), ${bgColor}`
-              : "linear-gradient(0deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.06) 100%), #FADED7",
-            backgroundBlendMode: "color-burn, normal",
-          }}
-          animate={{ x: hover ? 16 : 0 }}
-        >
-          <div className="w-full h-full bg-white" />
-        </motion.div>
-        <motion.div
-          className="noteBook-cover w-full h-full rounded-xl border-white outline outline-1 outline-[#1A181633] relative flex flex-col gap-6 justify-center items-center select-none"
-          style={{
-            backgroundColor: bgColor || "#FADED7",
-            borderWidth: 6,
-            originX: 0,
-          }}
-          animate={{ rotateY: hover ? -20 : 0 }}
-        >
-          {icon ? (
-            <Image
-              src={`/image/notes/icons/${icon}.svg`}
-              width={60}
-              height={60}
-              alt={icon}
-            />
-          ) : (
-            <div className="bg-black/10" style={{ width: 60, height: 60 }} />
-          )}
-          <p className="capitalize text-center text-base font-normal">
-            {icon ? icon : "title"}
-            <br />
-            notes
-          </p>
-        </motion.div>
+    <div
+      className={cx(
+        "noteBook-cover h-48 p-4 rounded-xl bg-[#FAE7E2] flex flex-col justify-between cursor-pointer",
+        className
+      )}
+      style={{ ...style }}
+      onClick={onClick}
+    >
+      <div className="bg-ownBlack text-white text-xs font-semibold py-0.5 px-2 w-max rounded-md">
+        {Num || "20"}
+      </div>
+      <div className="flex flex-col gap-2 font-semibold">
+        {src ? (
+          <Image
+            src={src}
+            width={32}
+            height={32}
+            alt={`${title1}` + `${title2}` || "icon"}
+          />
+        ) : (
+          <div className="w-8 h-8 bg-ownBlack/10" />
+        )}
+        <h2 className="text-base capitalize">{title1 || "title1"}</h2>
+        <h2 className="text-base capitalize -mt-2">{title2 || "title2"}</h2>
+        <span className="text-xs opacity-40">{time || "last time"}</span>
       </div>
     </div>
   );
