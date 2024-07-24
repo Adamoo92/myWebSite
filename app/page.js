@@ -47,7 +47,7 @@ export default function Home() {
     return () => {
       window.addEventListener("mousemove", update);
     };
-  }, [screenSize.w, screenSize.h, xAxisInput, yAxisInput]);
+  }, [screenSize, xAxisInput, yAxisInput]);
 
   return (
     <div className="w-full h-full bg-[#3DB5C3] flex justify-center items-center">

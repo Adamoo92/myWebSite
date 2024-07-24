@@ -63,7 +63,11 @@ const MultiSvg = () => {
   );
 };
 
-export const topBarRightBtn = [<MinusSvg />, <SquareSvg />, <MultiSvg />];
+export const topBarRightBtn = [
+  { name: "minus", icon: <MinusSvg /> },
+  { name: "minus", icon: <SquareSvg /> },
+  { name: "minus", icon: <MultiSvg /> },
+];
 
 // other skills
 export const otherSkillsList = [

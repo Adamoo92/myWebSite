@@ -63,10 +63,9 @@ function ToolsTitle() {
       const interval = setInterval(() => {
         rive.play();
       }, 400);
-      interval();
       return () => clearInterval(interval);
     }
-  }, [isInView]);
+  }, [isInView, rive]);
 
   return (
     <div className="flex gap-12 w-full h-max justify-center z-10" ref={ref}>
@@ -149,7 +148,7 @@ function TopBar() {
         className="px-2 py-2.5 bg-white rounded-lg flex gap-2 mb-6 z-10"
         style={{ boxShadow: "0px 16px 24px 2px #E5CFD0" }}
       >
-        {topBarRightBtn.map((icon, i) => (
+        {topBarRightBtn.map((item, i) => (
           <motion.div
             key={i}
             className="p-1.5 w-max h-max rounded-lg bg-transparent hover:bg-white cursor-pointer"
@@ -161,7 +160,7 @@ function TopBar() {
               y: -12,
             }}
           >
-            {icon}
+            {item.icon}
           </motion.div>
         ))}
       </div>
