@@ -29,6 +29,7 @@ export default function Tools() {
             <>
               {iconLists.map((item, i) => (
                 <motion.div
+                  key={`btn-animation-${i}`}
                   className="w-full h-max"
                   initial={{ x: -60, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
